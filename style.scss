@@ -13,7 +13,8 @@ h1, p {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(0deg);
+    transform-origin: 0 0;
     transition: 500ms;
 }
 h1 {
@@ -25,11 +26,18 @@ p {
     font-weight: 100;
 }
 
-.clicked {
-    h1 {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
-    p {
-        transform: translate(-50%, -50%) rotate(-360deg);
-    }
+#root.clicked p {
+	animation: 500ms rotate infinite;
+}
+#root.clicked h1 {
+	animation: 500ms rotate infinite reverse;
+}
+
+@keyframes rotate {
+	0% { 
+		transform: rotate(0) translate(-50%, -50%);
+	}
+	100%{ 
+		transform: rotate(360deg) translate(-50%, -50%);
+	}
 }
